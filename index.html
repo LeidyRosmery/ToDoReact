@@ -14,6 +14,7 @@
     <script type="text/javascript" src="http://fb.me/JSXTransformer-0.13.3.js">
     </script>
     <script type="text/jsx;harmony=true">
+    var taskList=["Task1", "Task2" , "Task3", "Task4"];
       class AddTask extends React.Component{
         constructor(){
           super();
@@ -30,26 +31,14 @@
          super();
        }
       render(){
+        var items=this.props.tasks.map((e,indice)=>{
+          return <li key={indice}>{e}</li>
+        });
           return <ul>
-            <li>TASK 01</li>
-            <li>TASK 02</li>
-            <li>TASK 03</li>
+            {items}
           </ul>
       }
     }
-
-    class Task extends React.Component{
-      constructor(){
-        super();
-      }
-     render(){
-         return <div>
-                  <span> Editar </span>
-                  <span> Editar </span>
-                  <span> Editar </span>
-                </div>
-     }
-   }
 
      class ToDo extends React.Component{
        constructor(){
@@ -59,12 +48,11 @@
           return <div>
                    <div><h1><strong> TO DO </strong></h1></div>
                    < AddTask />
-                   < ListTask />
-                   < Task />
+                   < ListTask tasks={this.props.tasks}/>
                 </div>
       }
     }
-    React.render(<ToDo />, document.getElementById('container'));
+    React.render(<ToDo tasks={taskList} />, document.getElementById('container'));
 
     </script>
 
