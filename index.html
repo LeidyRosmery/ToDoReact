@@ -18,11 +18,14 @@
       class AddTask extends React.Component{
         constructor(){
           super();
+          this.justSubmitted=this.justSubmitted.bind(this);
         }
         justSubmitted(e){
           e.preventDefault();
-          var text=e.target.querySelector('input').value;
-          input.value='';
+          var text=e.target.querySelector('input');
+          var value=text.value;
+          text.value='';
+          this.props.renderList(value);
         }
        render(){
            return <form onSubmit={this.justSubmitted}>
