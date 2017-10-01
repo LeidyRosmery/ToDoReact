@@ -7,21 +7,64 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
-
 <body>
-    <section id="container">
-    </section>
+    <div id="container"></div>
     <script type="text/javascript" src="http://fb.me/react-0.13.3.js">
     </script>
     <script type="text/javascript" src="http://fb.me/JSXTransformer-0.13.3.js">
     </script>
     <script type="text/jsx;harmony=true">
-        class Titulo extends React.Component{
-          render(){
-            return <div><h1><strong> TO DO </strong></h1></div>
+      class AddTask extends React.Component{
+        constructor(){
+          super();
         }
+       render(){
+           return <div>
+                    <input type="text"/>
+                  </div>
+       }
+     }
+
+     class ListTask extends React.Component{
+       constructor(){
+         super();
+       }
+      render(){
+          return <ul>
+            <li>TASK 01</li>
+            <li>TASK 02</li>
+            <li>TASK 03</li>
+          </ul>
       }
-        React.render(<Titulo />, document.getElementById('container'));
+    }
+
+    class Task extends React.Component{
+      constructor(){
+        super();
+      }
+     render(){
+         return <div>
+                  <span> Editar </span>
+                  <span> Editar </span>
+                  <span> Editar </span>
+                </div>
+     }
+   }
+
+     class ToDo extends React.Component{
+       constructor(){
+         super();
+       }
+      render(){
+          return <div>
+                   <div><h1><strong> TO DO </strong></h1></div>
+                   < AddTask />
+                   < ListTask />
+                   < Task />
+                </div>
+      }
+    }
+    React.render(<ToDo />, document.getElementById('container'));
 
     </script>
 
