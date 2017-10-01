@@ -1,0 +1,71 @@
+.title {
+    width: 25.5vw;
+    border: 2px solid #333;
+    border-radius: 4px;
+}
+
+.addTask {
+    color: #9370DB;
+    margin: 2em 0;
+}
+
+.input {
+    border: 2px solid #9370DB;
+    border-radius: 4px 0 0 4px;
+    padding: 2px 29px;
+    width: 22.6vw;
+}
+
+.tasks {
+    border: 2px solid #808080;
+    padding: 20px 10px;
+    width: 25.5vw;
+    border-radius: 4px;
+}
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    margin: 10vh auto;
+    padding: 20px;
+    border: solid 2px #333;
+}
+
+.input:focus ,.btn-delete:focus ,.btn-add:focus{
+    outline: none;
+}
+
+.btn-add {
+    background: #fff;
+    border: 2px solid #9370DB;
+    border-left: none;
+    font-size: 19px;
+    font-weight: 800;
+    color: #9370DB;
+}
+
+.taskList {
+    list-style: none;
+}
+
+.task {
+    border: 2px solid #48D1CC;
+    border-radius: 4px 0 0 4px;
+    display: flex;
+    align-items: center;
+    padding: 2px 29px;
+}
+
+.container-task {
+    padding: 0;
+}
+
+.btn-delete {
+    background: #fff;
+    border: 2px solid #48D1CC;
+    border-left: none;
+    font-size: 14px;
+    font-weight: 800;
+    color: #48D1CC;
+}
