@@ -42,7 +42,8 @@
 
      class ToDo extends React.Component{
        constructor(){
-         super();
+         super(props);
+         this.state={tasks:props.taskList};
        }
       render(){
           return <div>
