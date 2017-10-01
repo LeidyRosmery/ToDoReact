@@ -14,15 +14,20 @@
     <script type="text/javascript" src="http://fb.me/JSXTransformer-0.13.3.js">
     </script>
     <script type="text/jsx;harmony=true">
-    var taskList=["Task1", "Task2" , "Task3", "Task4"];
+    var tasksList=["Task1", "Task2" , "Task3", "Task4"];
       class AddTask extends React.Component{
         constructor(){
           super();
         }
+        justSubmitted(e){
+          e.preventDefault();
+          var text=e.target.querySelector('input').value;
+          input.value='';
+        }
        render(){
-           return <div>
+           return <form onSubmit={this.justSubmitted}>
                     <input type="text"/>
-                  </div>
+                  </form>
        }
      }
 
@@ -41,19 +46,25 @@
     }
 
      class ToDo extends React.Component{
-       constructor(){
-         super(props);
-         this.state={tasks:props.taskList};
+       constructor(props){
+         super();
+         this.state={tasks:props.tasks};
+         this.renderList=this.renderList.bind(this);
+       }
+       renderList(text){
+         var update=this.state.tasks;
+         update.push(text);
+         this.setState({tasks:update});
        }
       render(){
           return <div>
                    <div><h1><strong> TO DO </strong></h1></div>
-                   < AddTask />
-                   < ListTask tasks={this.props.tasks}/>
+                   < AddTask renderList={this.renderList}/>
+                   < ListTask tasks={this.state.tasks}/>
                 </div>
       }
     }
-    React.render(<ToDo tasks={taskList} />, document.getElementById('container'));
+    React.render(<ToDo tasks={tasksList} />, document.getElementById('container'));
 
     </script>
 
