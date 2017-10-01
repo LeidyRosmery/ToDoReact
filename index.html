@@ -37,16 +37,16 @@
      class ListTask extends React.Component{
        constructor(){
          super();
-         this.removeTask=this.removeTask.bind(this)
+         this.remove=this.remove.bind(this);
        }
 
-       removeTask(elemento){
-         var valueItem=elemento.target.parentNode.querySelector('span').innerText;
-this.props.removeTask(value);
+       remove(elemento){
+         var value=elemento.target.parentNode.querySelector('span').innerText;
+this.props.remove(value);
        }
       render(){
         var items=this.props.tasks.map((e,indice)=>{
-          return <li key={indice}><span>{e}</span><button onclick={this.removeTask}>X</button></li>
+          return <li key={indice}><span>{e}</span><button onClick={this.remove}>X</button></li>
         });
           return <ul>
             {items}
@@ -66,7 +66,7 @@ this.props.removeTask(value);
          update.push(text);
          this.setState({tasks:update});
        }
-       removeTaskTask(text){
+       removeTask(text){
          var update=this.state.tasks;
          update.splice(update.indexOf(text),1);
          this.setState({tasks:update});
@@ -75,7 +75,7 @@ this.props.removeTask(value);
           return <div>
                    <div><h1><strong> TO DO </strong></h1></div>
                    < AddTask renderList={this.renderList} />
-                   < ListTask tasks={this.state.tasks} removeTask={this.removeTask}/>
+                   < ListTask tasks={this.state.tasks} remove={this.removeTask}/>
                 </div>
       }
     }
