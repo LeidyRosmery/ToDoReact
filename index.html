@@ -10,13 +10,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="container"></div>
+    <div class="contenedor" id="contenedor"></div>
     <script type="text/javascript" src="http://fb.me/react-0.13.3.js">
     </script>
     <script type="text/javascript" src="http://fb.me/JSXTransformer-0.13.3.js">
     </script>
     <script type="text/jsx;harmony=true">
-    var tasksList=["Task1", "Task2" , "Task3", "Task4"];
+    var tasksList=["Levantar a las 8:00 am"];
       class AddTask extends React.Component{
         constructor(){
           super();
@@ -24,23 +24,23 @@
         }
         justSubmitted(e){
           e.preventDefault();
-          var text=e.target.querySelector('input');
+          var text=e.target.parentNode.previousElementSibling;
           var value=text.value;
           text.value='';
           this.props.renderList(value);
         }
        render(){
-      /*   return <div class="addTask btn-group ">
-          <input type="text"  class="input" name="" value=""/>
-          <button type="button" class="btn-add btn btn-default">
-             <span class="glyphicon glyphicon-plus" onClick={this.justSubmitted}>+</span>
+     return <div className="addTask btn-group ">
+          <input type="text"  className="input" name="" value=""/>
+          <button type="button" className="btn-add btn btn-default">
+             <span className="glyphicon glyphicon-plus" onClick={this.justSubmitted}>+</span>
            </button>
          </div>
-*/
 
-           return <form onSubmit={this.justSubmitted}>
+
+          /*     return <form onSubmit={this.justSubmitted}>
                     <input type="text"/>
-                  </form>
+                  </form>*/
        }
      }
 
@@ -56,11 +56,22 @@ this.props.remove(value);
        }
       render(){
         var items=this.props.tasks.map((e,indice)=>{
-          return <li key={indice}><span>{e}</span><button onClick={this.remove}>X</button></li>
+
+        return  <li key={indice} className="taskList">
+                <div className="btn-group btn-groupTask">
+                  <div className="task"> <strong>Task {indice+1} : {e}</strong> </div>
+                  <button type="button" onClick={this.remove} className="btn btn-delete btn-default">
+                     <span className="glyphicon glyphicon-plus">X</span>
+                   </button>
+                </div>
+              </li>
         });
-          return <ul>
-            {items}
-          </ul>
+
+          return <div className="tasks">
+                <ul className="container-task">
+                  {items}
+                </ul>
+                </div>
       }
     }
 
@@ -89,7 +100,7 @@ this.props.remove(value);
                 </div>
       }
     }
-    React.render(<ToDo tasks={tasksList} />, document.getElementById('container'));
+    React.render(<ToDo tasks={tasksList} />, document.getElementById('contenedor'));
 
     </script>
 
