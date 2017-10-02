@@ -36,8 +36,10 @@
     border: solid 2px #333;
 }
 
-.input:focus, .btn-delete:focus, .btn-add:focus {
+.input:focus, .btn-delete:hover, .btn-delete:focus, .btn-add:focus, .btn-complete:focus, .btn-complete:hover {
     outline: none;
+    background: #fff;
+
 }
 
 .btn-add {
@@ -51,15 +53,16 @@
 
 .taskList {
     list-style: none;
+    display: flex;
 }
 
 .task {
     border: 2px solid #48D1CC;
     border-radius: 4px 0 0 4px;
     display: flex;
-    width: 21.1vw;
+    width: 18vw;
     align-items: center;
-    padding: 2px 29px;
+    padding: 8px 19px;
 }
 
 .container-task {
@@ -70,7 +73,22 @@
     background: #fff;
     border: 2px solid #48D1CC;
     border-left: none;
+    border-radius: 0 4px 4px 0;
     font-size: 14px;
     font-weight: 800;
     color: #48D1CC;
+}
+
+.btn-complete {
+    background: #fff;
+    border: 2px solid #48D1CC;
+    border-left: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: #48D1CC;
+}
+
+.complete {
+    background: #48D1CC;
 }
