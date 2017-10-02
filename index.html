@@ -16,13 +16,13 @@
     <script type="text/javascript" src="http://fb.me/JSXTransformer-0.13.3.js">
     </script>
     <script type="text/jsx;harmony=true" >
-    var tasksList=["Task1", "Task2" , "Task3", "Task4"];
+    var tasksList=["Despertar a las 8:00 am"];
       class AddTask extends React.Component{
         constructor(){
           super();
-          this.justSubmitted=this.justSubmitted.bind(this);
+          this.getText=this.getText.bind(this);
         }
-        justSubmitted(e){
+        getText(e){
           e.preventDefault();
           var text=e.target.querySelector('input');
           var value=text.value;
@@ -30,8 +30,9 @@
           this.props.renderList(value);
         }
        render(){
-           return <form onSubmit={this.justSubmitted}>
-                    <input type="text"/>
+
+        return <form className="addTask" onSubmit={this.getText}>
+                    <input type="text" placeholder="To do !!!" className="input"/>
                   </form>
        }
      }
@@ -48,7 +49,7 @@
       render(){
         var items=this.props.tasks.map((e,indice)=>{
        return <li key={indice} className="taskList btn-group btn-groupTask">
-                 <span className="task">{e}</span>
+                 <span className="task"><strong>Task {indice+1} :</strong>{e}</span>
                  <button className="btn btn-delete btn-default" onClick={this.remove}>X</button>
                  </li>
         });
